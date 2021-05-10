@@ -57,7 +57,7 @@ body {
         .MyProjects .ProjBody h2 {
             font-size: 60px;
             text-align: center;
-            padding-left: 50%;
+            padding-left: 375px;
             color: black;
             width: 100%;
         }
@@ -74,8 +74,7 @@ body {
             left: 0px;
             right: 0px;
             align: center;
-            padding-left: 50px;
-        }
+            padding-left: 300px;
 /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
 */
