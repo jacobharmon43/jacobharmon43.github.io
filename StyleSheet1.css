@@ -1,0 +1,128 @@
+﻿html {
+    overflow-y: scroll;
+    max-width: 1140px;
+}
+
+body {
+    position: absolute;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+}
+
+.sidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+    .sidebar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+    }
+
+    .sidebar p {
+        padding: 0px 8px 4px 3px;
+        text-decoration: none;
+        font-size: 12px;
+        color: white;
+        display: block;
+    }
+
+    .sidebar a:hover {
+        color: darkolivegreen;
+    }
+
+.MyProjects {
+    margin-left: 160px;
+    padding-left: 10px;
+    display: block;
+}
+
+    .MyProjects .ProjBody {
+        display: block;
+        width: 750px;
+    }
+
+        .MyProjects .ProjBody h2 {
+            font-size: 60px;
+            text-align: center;
+            padding-left: 50%;
+            color: black;
+            width: 100%;
+        }
+
+        .MyProjects .ProjBody p {
+            padding-left: 300px;
+            font-size: 21px;
+            text-align: center;
+            color: black;
+            width: 1000px;
+        }
+
+        .MyProjects .ProjBody iframe {
+            left: 0px;
+            right: 0px;
+            align: center;
+            padding-left: 50px;
+        }
+/*About me page
+  Contains blog style paragraph sections with a title, body, and image to the right of the body
+*/
+.AboutMe {
+    padding-left: 50px;
+    position: absolute;
+    margin-left: 160px;
+    display: none; /*Intitially hidden*/
+    grid-template-columns: 750px 750px;
+    grid-row: auto auto;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+}
+
+    .AboutMe .Body {
+        display: block;
+        width: 750px;
+    }
+
+        .AboutMe .Body h1 {
+            font-size: 60px;
+            text-align: center;
+            color: black;
+            width: 100%;
+        }
+
+        .AboutMe .Body p {
+            font-size: 21px;
+            text-align: center;
+            color: black;
+        }
+
+        .AboutMe .Body img {
+            align: center;
+            padding-left: 50px;
+            height: 250px;
+            left: 0px;
+            right: 0px;
+        }
+
+/*End about me page*/
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}
