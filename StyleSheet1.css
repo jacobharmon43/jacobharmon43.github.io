@@ -1,4 +1,4 @@
-﻿html {
+html {
     overflow-y: scroll;
     max-width: 1140px;
 }
@@ -51,7 +51,7 @@ body {
 
     .MyProjects .ProjBody {
         display: block;
-        width: 750px;
+        width: 1000px;
     }
 
         .MyProjects .ProjBody h2 {
@@ -77,8 +77,9 @@ body {
             padding-left: 300px;
         }
 
-        .MyProjects .ProbBody .scriptWrapper{
+        .MyProjects .ProjBody .scriptWrapper{
             display: grid;
+            padding-left: 150px;
             grid-template-columns: 600px 600px;
             grid-row-gap: 50px;
             grid-column-gap: 50px;
