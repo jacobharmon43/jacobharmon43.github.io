@@ -77,12 +77,15 @@ body {
             padding-left: 300px;
         }
 
-        .MyProjects .ProjBody script{
-            padding-left: 300px;
-            grid-template-columns: 750px 750px;
-            grid-row: auto auto;
-            grid-column-gap: 50px;
+        .MyProjects .ProbBody .scriptWrapper{
+            display: grid;
+            grid-template-columns: 600px 600px;
             grid-row-gap: 50px;
+            grid-column-gap: 50px;
+        }
+        
+        .MyProjects .ProjBody .scriptWrapper script{
+            align: center;
         }
 /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
