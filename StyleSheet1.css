@@ -79,6 +79,10 @@ body {
 
         .MyProjects .ProjBody script{
             padding-left: 300px;
+            grid-template-columns: 750px 750px;
+            grid-row: auto auto;
+            grid-column-gap: 50px;
+            grid-row-gap: 50px;
         }
 /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
