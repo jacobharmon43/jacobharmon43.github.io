@@ -76,6 +76,10 @@ body {
             align: center;
             padding-left: 300px;
         }
+
+        .MyProjects .ProjBody script{
+            padding-left: 300px;
+        }
 /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
 */
