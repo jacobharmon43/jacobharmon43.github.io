@@ -51,6 +51,7 @@ body {
 
     .MyProjects .ProjBody {
         display: block;
+        align: center;
         width: 1000px;
     }
 
