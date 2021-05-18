@@ -1,6 +1,10 @@
 // JavaScript source code
-var show = function (elem) {
+var showgrid = function (elem) {
     elem.style.display = 'grid';
+};
+
+var showblock = function (elem) {
+    elem.style.display = 'block';
 };
 
 var hide = function (elem) {
@@ -15,39 +19,18 @@ var toggle = function (elem) {
     show(elem);
 }
 
-document.getElementById("gistList").onchange = function (e) {
-	if (e.target.value) {
-		// Create an iframe, append it to this document where specified
-		var gistFrame = document.createElement("iframe");
-		gistFrame.setAttribute("width", "100%");
-		gistFrame.id = "gistFrame";
+const spans = document.querySelectorAll('.word span');
 
-		var zone = document.getElementById("gistZone");
-		zone.innerHTML = "";
-		zone.appendChild(gistFrame);
+spans.forEach((span, idx) => {
+	span.addEventListener('click', (e) => {
+		e.target.classList.add('active');
+	});
+	span.addEventListener('animationend', (e) => {
+		e.target.classList.remove('active');
+	});
 
-		// Create the iframe's document
-		var gistFrameHTML = '<html><body onload="parent.adjustIframeSize(document.body.scrollHeight)"><scr' + 'ipt type="text/javascript" src="https://gist.github.com/' + e.target.value + '.js"></sc' + 'ript></body></html>';
-
-		// Set iframe's document with a trigger for this document to adjust the height
-		var gistFrameDoc = gistFrame.document;
-
-		if (gistFrame.contentDocument) {
-			gistFrameDoc = gistFrame.contentDocument;
-		} else if (gistFrame.contentWindow) {
-			gistFrameDoc = gistFrame.contentWindow.document;
-		}
-
-		gistFrameDoc.open();
-		gistFrameDoc.writeln(gistFrameHTML);
-		gistFrameDoc.close();
-
-		console.log("iframe added");
-	}
-}
-
-function adjustIframeSize(newHeight) {
-	var i = document.getElementById("gistFrame");
-	i.style.height = parseInt(newHeight) + "px";
-	console.log("size adjusted", newHeight);
-}
+	// Initial animation
+	setTimeout(() => {
+		span.classList.add('active');
+	}, 750 * (idx + 1))
+});

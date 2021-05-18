@@ -12,26 +12,52 @@
     <script src="Script1.js"></script>
 </head>
 <body>
-    <center>
-        <div class="sidebar">
-            <img src="https://www.keepandshare.com/doc26/111262/profpic-png-43k?da=y" alt="Image of me">
-            <p>Jacob Harmon</p>
-            <p>Saint Louis, MO</p>
-            <p>Applied Mathematics and Computer Science Major</p>
-            <a href="#about" onclick="toggle(p1); hide(p2);">My Projects</a>
-            <a href="https://www.keepandshare.com/doc26/111261/resume-pdf-67k?da=y" target="_blank">My Resume</a>
-            <a href="#about" onclick="toggle(p2); hide(p1);">About Me</a>
+    <div class="sidebar">
+        <img src="https://www.keepandshare.com/doc26/111262/profpic-png-43k?da=y" alt="Image of me">
+        <p>Jacob Harmon</p>
+        <p>Saint Louis, MO</p>
+        <p>Applied Mathematics and Computer Science Major</p>
+        <a href="#home" onclick()="showblock(p0); hide(p1); hide(p2); hide(p3);">Home</a>
+        <a href="#portfolio" onclick="showblock(p1); hide(p0); hide(p2); hide(p3);">My Projects</a>
+        <a href="#resume" onclick="showblock(p2); hide(p0); hide(p1); hide(p3);">My Resume</a>
+        <a href="#about" onclick="showgrid(p3); hide(p0);hide(p1); hide(p2);">About Me</a>
+    </div>
+    <div class="content">
+        <div class="home" id="p0">
+            <div class="word">
+                <span>W</span>
+                <span>E</span>
+                <span>L</span>
+                <span>C</span>
+                <span>O</span>
+                <span>M</span>
+                <span>E</span>
+            </div>
+            <div class="word">
+                <span>T</span>
+                <span>O</span>
+            </div>
+            <div class="word">
+                <span>M</span>
+                <span>Y</span>
+            </div>
+            <div class="word">
+                <span>S</span>
+                <span>I</span>
+                <span>T</span>
+                <span>E</span>
+            </div>
         </div>
         <div class="MyProjects" id="p1">
             <div class="ProjBody">
                 <h2>Data Sorting Algorithms Visualized</h2>
-               <iframe frameborder="0" src="https://itch.io/embed-upload/3818688?color=333333" allowfullscreen="" width="1000" height="620"><a href="https://jacobharmon43.itch.io/data-sorter">Play Data Sorter on itch.io</a></iframe>
+                <iframe frameborder="0" src="https://itch.io/embed-upload/3818688?color=333333" allowfullscreen="" width="1000" height="620"><a href="https://jacobharmon43.itch.io/data-sorter">Play Data Sorter on itch.io</a></iframe>
                 <p>
                     A useful tool for visualizing the differences in sorting algorithms based on how they travel, how long they take, and how many instructions (Comparisons and Swaps) they call.
                     Temporarily finished. Still To Do: Merge sort, and actually visualizing Quick Sort (Right now it steps out of the coroutine, so I can't really delay it properly).
                     Source code is below:
                 </p>
-                <div class ="scriptWrapper">
+                <div class="scriptWrapper">
                     <script src="https://gist.github.com/jacobharmon43/abc8364491789e41449aa8715031542a.js"></script>
                     <script src="https://gist.github.com/jacobharmon43/92960775add6111ba3f05c24d99d4d5d.js"></script>
                     <script src="https://gist.github.com/jacobharmon43/7eb6213320d29302bfb6267ae2705cbc.js"></script>
@@ -44,9 +70,11 @@
                     sorting algorithm, this intentional slowdown allows the user to actually see the colored bars travel, at the cost of accurate data.
                 </p>
             </div>
-            
+
         </div>
-        <div class="AboutMe" id="p2">
+        <div class="Resume" id="p2">
+        </div>
+        <div class="AboutMe" id="p3">
             <div class="Body">
                 <h1>Summary of myself</h1>
                 <img src="https://www.keepandshare.com/doc26/111264/logo-356-jpg-123k?da=y" alt="S&T Logo">
@@ -62,7 +90,7 @@
                 <img src="https://www.keepandshare.com/doc26/111265/all-mighty-cuteness-jpg-158k?da=y" alt="Willow & Oliver">
                 <p>
                     By far my favorite coding language to work in is C#, and outside of my portfolio, which consists of finished projects, I have made many small applications
-                    using Unity's Game Engine which runs in C#. Following from this I am a fan of C++, and Java, which are both similar mostly to C#. Other than that I know many 
+                    using Unity's Game Engine which runs in C#. Following from this I am a fan of C++, and Java, which are both similar mostly to C#. Other than that I know many
                     languages, and am proficient in them, but I prefer to work in these three when at all possible.
                 </p>
             </div>
@@ -72,13 +100,13 @@
                 <p>
                     These are mostly example posts just to fully flesh out my website, but as to make it more genuine, they will not be
                     made up and pointless. Here are my two guinea pigs who provide me the utmost joy at the moment. Revel in their glory.
-                    On the left is Willow, who always likes to misbehave, and on the right is Oliver, who is reserved and shy. Their 
+                    On the left is Willow, who always likes to misbehave, and on the right is Oliver, who is reserved and shy. Their
                     personalities are very opposite when interacting with people, but when it comes to food they both know very well how
                     to beg and look cute doing it. While they currently live with my girlfriend, as my apartment in Rolla does not allow pets
                     I am very excited to see them over the summer back in Saint Louis!
                 </p>
             </div>
         </div>
-    </center>
+    </div>
 </body>
 </html>

@@ -1,11 +1,16 @@
+
 html {
     overflow-y: scroll;
     max-width: 1140px;
+    height: 100%;
+    width: 100%;
 }
 
 body {
     position: absolute;
     background-color: white;
+    height: 100%;
+    width: 100%;
     padding: 0;
     margin: 0;
     z-index: 0;
@@ -13,7 +18,7 @@ body {
 
 .sidebar {
     height: 100%;
-    width: 160px;
+    width: 150px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -24,11 +29,16 @@ body {
 }
 
     .sidebar a {
-        padding: 6px 8px 6px 16px;
+        width: 85%;
+        padding-left: 5px;
+        padding-top: 3px;
         text-decoration: none;
-        font-size: 25px;
+        font-size: 20px;
+        border-bottom: 3px solid;
+        border-color: beige;
         color: white;
         display: block;
+        transition: all 0.1s ease-in-out;
     }
 
     .sidebar p {
@@ -39,95 +49,136 @@ body {
         display: block;
     }
 
+    .sidebar img {
+        align-content: center;
+        border: 3px solid beige;
+    }
+
+
     .sidebar a:hover {
         color: darkolivegreen;
+        border-color: darkolivegreen;
     }
 
-.MyProjects {
-    margin-left: 160px;
-    padding-left: 10px;
-    display: block;
+
+.content {
+    height: 100%;
+    width: 100%;
+    margin-left: 150px;
 }
 
-    .MyProjects .ProjBody {
-        display: block;
-        align: center;
-        width: 1000px;
+    .content .home {
+        background-color: skyblue;
+        overflow-y: hidden;
+        padding-left: 50px;
+        padding-top: 10%;
+        min-width: 100%;
+        height: 100%;
+        position: absolute;
+        align-content: center;
     }
 
-        .MyProjects .ProjBody h2 {
-            font-size: 60px;
-            text-align: center;
-            padding-left: 300px;
-            color: black;
+        .content .home .word {
+            font-family: 'Anton', sans-serif;
+            perspective: 1000px;
+        }
+
+            .content .home .word span {
+                display: inline-block;
+                font-size: 100px;
+                width: auto;
+                height: auto;
+                transition: all .1s ease-in-out;
+                text-align: center;
+            }
+
+                .content .home .word span:hover {
+                    font-size: 150px;
+                }
+    /* My actual portfolio projects page*/
+
+    .content .MyProjects {
+        display: none;
+    }
+
+        .content .MyProjects .ProjBody {
+            display: block;
+            align: center;
             width: 100%;
         }
 
-        .MyProjects .ProjBody p {
-            padding-left: 300px;
-            font-size: 21px;
-            text-align: center;
-            color: black;
-            width: 1000px;
-        }
+            .content .MyProjects .ProjBody h2 {
+                font-size: 60px;
+                text-align: center;
+                color: black;
+                width: 100%;
+            }
 
-        .MyProjects .ProjBody iframe {
-            left: 0px;
-            right: 0px;
-            align: center;
-            padding-left: 300px;
-        }
+            .content .MyProjects .ProjBody p {
+                padding-left: 300px;
+                font-size: 21px;
+                text-align: center;
+                color: black;
+                width: 100%;
+            }
 
-        .MyProjects .ProjBody .scriptWrapper{
-            display: grid;
-            padding-left: 50px;
-            grid-template-columns: 525px 525px 525px;
-            grid-row-gap: 10px;
-            grid-column-gap: 10px;
-        }
-        
-        .MyProjects .ProjBody .scriptWrapper script{
-            align: center;
-        }
-/*About me page
+            .content .MyProjects .ProjBody iframe {
+                left: 0px;
+                right: 0px;
+                align: center;
+                padding-left: 300px;
+            }
+
+            .content .MyProjects .ProjBody .scriptWrapper {
+                display: grid;
+                padding-left: 50px;
+                grid-template-columns: 525px 525px 525px;
+                grid-row-gap: 10px;
+                grid-column-gap: 10px;
+            }
+
+                .content .MyProjects .ProjBody .scriptWrapper script {
+                    align: center;
+                }
+
+    /*End Portfolio projects*/
+
+    /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
 */
-.AboutMe {
-    padding-left: 50px;
-    position: absolute;
-    margin-left: 160px;
-    display: none; /*Intitially hidden*/
-    grid-template-columns: 750px 750px;
-    grid-row: auto auto;
-    grid-column-gap: 50px;
-    grid-row-gap: 50px;
-}
-
-    .AboutMe .Body {
-        display: block;
-        width: 750px;
+    .content .AboutMe {
+        display: none; /*Intitially hidden*/
+        grid-template-columns: 750px 750px;
+        grid-row: auto auto;
+        grid-column-gap: 50px;
+        grid-row-gap: 50px;
     }
 
-        .AboutMe .Body h1 {
-            font-size: 60px;
-            text-align: center;
-            color: black;
-            width: 100%;
+        .content .AboutMe .Body {
+            display: block;
+            width: 750px;
         }
 
-        .AboutMe .Body p {
-            font-size: 21px;
-            text-align: center;
-            color: black;
-        }
+            .content .AboutMe .Body h1 {
+                font-size: 60px;
+                text-align: center;
+                color: black;
+                width: 100%;
+            }
 
-        .AboutMe .Body img {
-            align: center;
-            padding-left: 50px;
-            height: 250px;
-            left: 0px;
-            right: 0px;
-        }
+            .content .AboutMe .Body p {
+                font-size: 21px;
+                text-align: center;
+                color: black;
+            }
+
+            .content .AboutMe .Body img {
+                align-content: center;
+                padding-left: 50px;
+                height: 250px;
+                left: 0px;
+                right: 0px;
+            }
 
 /*End about me page*/
 @media screen and (max-height: 450px) {
