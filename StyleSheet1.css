@@ -68,6 +68,7 @@ body {
 }
 
     .content .home {
+        diplay: block;
         background-color: skyblue;
         overflow-y: hidden;
         padding-left: 50px;
