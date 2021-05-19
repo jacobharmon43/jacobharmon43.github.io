@@ -103,36 +103,27 @@ body {
     }
 
         .content .MyProjects .ProjBody {
-            display: block;
-            align: center;
-            width: 100%;
+            padding-left: 100px;
         }
 
-            .content .MyProjects .ProjBody h2 {
-                font-size: 60px;
-                text-align: center;
-                color: black;
-                width: 100%;
-            }
-
             .content .MyProjects .ProjBody p {
-                padding-left: 300px;
+                width: 1000px;
                 font-size: 21px;
                 text-align: center;
                 color: black;
-                width: 100%;
+            }
+
+            .content .MyProjects .ProjBody h2 {
+                font-size: 60px;
+                color: black;
+                width: 1000px;
             }
 
             .content .MyProjects .ProjBody iframe {
-                left: 0px;
-                right: 0px;
-                align: center;
-                padding-left: 300px;
             }
 
             .content .MyProjects .ProjBody .scriptWrapper {
                 display: grid;
-                padding-left: 50px;
                 grid-template-columns: 525px 525px 525px;
                 grid-row-gap: 10px;
                 grid-column-gap: 10px;
@@ -156,15 +147,15 @@ body {
     }
 
         .content .AboutMe .Body {
-            display: block;
-            width: 750px;
+            align-content: center;
+            width: 100%;
         }
 
             .content .AboutMe .Body h1 {
                 font-size: 60px;
-                text-align: center;
                 color: black;
                 width: 100%;
+                text-align: center;
             }
 
             .content .AboutMe .Body p {
@@ -174,11 +165,8 @@ body {
             }
 
             .content .AboutMe .Body img {
-                align-content: center;
-                padding-left: 50px;
                 height: 250px;
-                left: 0px;
-                right: 0px;
+                padding-left: 25%;
             }
 
 /*End about me page*/
