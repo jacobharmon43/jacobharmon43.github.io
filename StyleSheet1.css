@@ -8,7 +8,7 @@ html {
 
 body {
     position: absolute;
-    background-color: white;
+    background-color: skyblue;
     height: 100%;
     width: 100%;
     padding: 0;
@@ -62,10 +62,9 @@ body {
 
 
 .content {
-    height: fit-content;
+    height: max-content;
     width: 100%;
     margin-left: 150px;
-    background-color: skyblue;
 }
 
     .content .home {
