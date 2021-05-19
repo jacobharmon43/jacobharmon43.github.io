@@ -1,13 +1,30 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    if(isset($_POST['submit'])){
+        $email = $_POST['email'];
+        $subject = $_POST['Subject'];
+        $content = $_POST['content'];
+        $to = "jacobharmon43@gmail.com";
+        $headers = "From:" . $email;
+        mail($to, $subject, $content, $headers);
+        echo "Mail sent.";
+    }
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Portfolio</title>
     <link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
     <style type="text/css">
-        .gist {width:500px !important;}
+        .gist {
+            width: 500px !important;
+        }
+
         .gist-file
-        .gist-data {max-height: 500px;max-width: 500px;}
+        .gist-data {
+            max-height: 500px;
+            max-width: 500px;
+        }
     </style>
     <script src="Script1.js"></script>
 </head>
@@ -101,7 +118,7 @@
                 <img src="https://www.keepandshare.com/doc26/111280/code-jpg-84k?da=y" alt="PassionImg">
                 <p>
                     Currently, I am really into front-end development, as at the moment of writing this I am learning html/css/javascript, and despite how finnicky it is, it is very
-                    fun to work in. As a hobby I have been working on game development with various engines, at the moment I am most familiar with Unity which is in C#, and Unreal Engine which 
+                    fun to work in. As a hobby I have been working on game development with various engines, at the moment I am most familiar with Unity which is in C#, and Unreal Engine which
                     runs in C++. Looking to get into more niche engines, like maybe developing directly in WebGL, or developing on something like Roblox, which uses a niche language LUA. I am also
                     very into pixelart so that coincides well with my current enjoyment of game development, atleast in the 2D perspective.
                 </p>
@@ -128,18 +145,6 @@
                 <textarea id="content" name="content" placeholder="Type here..." style="height:200px"></textarea>
                 <input type="submit" value="Submit" />
             </form>
-            <?php
-                if(isset($_POST['submit'])){
-                    $email = $_POST['email'];
-                    $subject = $_POST['Subject'];
-                    $content = $_POST['content'];
-                    $to = "jacobharmon43@gmail.com";
-                    $headers = "From:" . $email;
-                    mail($to, $subject, $content, $headers);
-                    echo "Mail sent.";
-            }
-
-            ?>
         </div>
     </div>
 </body>
