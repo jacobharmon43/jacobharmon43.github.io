@@ -1,15 +1,4 @@
-﻿<?php
-    if(isset($_POST['submit'])){
-        $email = $_POST['email'];
-        $subject = $_POST['Subject'];
-        $content = $_POST['content'];
-        $to = "jacobharmon43@gmail.com";
-        $headers = "From:" . $email;
-        mail($to, $subject, $content, $headers);
-        echo "Mail sent.";
-    }
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -138,7 +127,7 @@
         </div>
         <div class="ContactMe" id="p4">
             <h3> Contact Me! </h3>
-            <form method="post" name="email" action="">
+            <form method="post" name="email" action="Email.php">
                 <input type="text" placeholder="Enter your Email" name="email" />
                 <input type="text" placeholder="Subject" name="Subject" />
                 <label for="content">Content</label>
