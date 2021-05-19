@@ -127,12 +127,12 @@
         </div>
         <div class="ContactMe" id="p4">
             <h3> Contact Me! </h3>
-            <form method="post" name="email" action="Email.php">
-                <input type="text" placeholder="Enter your Email" name="email" />
-                <input type="text" placeholder="Subject" name="Subject" />
-                <label for="content">Content</label>
-                <textarea id="content" name="content" placeholder="Type here..." style="height:200px"></textarea>
-                <input type="submit" value="Submit" />
+            <form action="Email.php" method="post">
+                First Name: <input type="text" name="first_name"><br>
+                Last Name: <input type="text" name="last_name"><br>
+                Email: <input type="text" name="email"><br>
+                Message:<br><textarea rows="5" name="message" cols="30"></textarea><br>
+                <input type="submit" name="submit" value="Submit">
             </form>
         </div>
     </div>
