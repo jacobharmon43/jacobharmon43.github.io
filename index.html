@@ -121,7 +121,7 @@
         </div>
         <div class="ContactMe" id="p4">
             <h3> Contact Me! </h3>
-            <form method ="post" name="email"  action="">
+            <form method="post" name="email" action="">
                 <input type="text" placeholder="Enter your Email" name="email" />
                 <input type="text" placeholder="Subject" name="Subject" />
                 <label for="content">Content</label>
@@ -129,12 +129,16 @@
                 <input type="submit" value="Submit" />
             </form>
             <?php
-                $email = $_POST['email'];
-                $subject = $_POST['Subject'];
-                $content = $_POST['content'];
-                $to = "jacobharmon43@gmail.com";
-                $headers = "From: $email";
-                mail($to, $subject, $content, $headers);
+                if(isset($_POST['submit'])){
+                    $email = $_POST['email'];
+                    $subject = $_POST['Subject'];
+                    $content = $_POST['content'];
+                    $to = "jacobharmon43@gmail.com";
+                    $headers = "From:" . $email;
+                    mail($to, $subject, $content, $headers);
+                    echo "Mail sent.";
+            }
+
             ?>
         </div>
     </div>
