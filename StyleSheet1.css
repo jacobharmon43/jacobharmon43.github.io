@@ -43,6 +43,7 @@ body {
         color: white;
         display: block;
         transition: all 0.1s ease-in-out;
+        text-align: center;
     }
 
     .sidebar p {
@@ -51,12 +52,18 @@ body {
         font-size: 12px;
         color: white;
         display: block;
+        text-align: center;
     }
 
-    .sidebar img {
-        align-content: center;
-        border: 3px solid beige;
+    .sidebar .imageWrap {
+        display: flex;
+        width: 150px;
     }
+
+        .sidebar .imageWrap img {
+            margin: auto;
+            border: 3px solid beige;
+        }
 
 
     .sidebar a:hover {
