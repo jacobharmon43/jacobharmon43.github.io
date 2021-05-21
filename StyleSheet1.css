@@ -142,6 +142,11 @@ body {
                 .content .MyProjects .ProjBody .scriptWrapper script {
                 }
 
+                .content .MyProjects .ProjBody .scriptWrapper embed{
+                    width: 500px;
+                    height: 500px;
+                }
+
     /*End Portfolio projects*/
 
     /*About me page
