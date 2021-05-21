@@ -74,6 +74,7 @@ body {
     height: max-content;
     width: 100%;
     margin-left: 175px;
+    max-width: 1300px;
 }
 
     .content .home {
@@ -112,7 +113,6 @@ body {
 
         .content .MyProjects .ProjBody {
             padding-left: 100px;
-            max-width: 1200px;
         }
 
             .content .MyProjects .ProjBody p {
@@ -142,8 +142,7 @@ body {
             }
 
                 .content .MyProjects .ProjBody .scriptWrapper embed {
-                    min-width: 600px;
-                    max-width: 1000px;
+                    min-width: 550px;
                     height: 500px;
                     background-color: white;
                     margin: 6px;
