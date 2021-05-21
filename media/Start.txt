@@ -1,0 +1,64 @@
+import webbrowser
+import subprocess
+import tkinter as tk
+from tkinter import ttk
+
+#Basic startup program to run with windows boot.
+def main():
+    runApp()
+
+def runApp():  #This controls the entire window
+    root = tk.Tk()
+    app = Application(root)
+    root.geometry("300x150")
+    root.resizable(False,False)
+    root.mainloop()
+
+def runBrowser():
+    urls = ["https://gmail.com", "https://outlook.com/mail/inbox", "https://timeclock.tracksmart.com/app"] #These are just the browser windows I need open, can add urls
+
+    for url in urls:
+        webbrowser.open_new_tab(url)
+
+def runArt():
+    subprocess.Popen("C:\Program Files (x86)\GraphicsGale\Gale.exe")  #Replace these with programs of your desire
+
+def runDev():
+    subprocess.Popen(r"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe") #See above comment
+
+def Quit():  #Ends the main root loop
+    root.quit()
+    root.destroy()
+
+class Application(ttk.Frame):
+
+    def __init__(self, master):
+        ttk.Frame.__init__(self, master)
+        self.master = master
+        self.initUI()
+
+    def initUI(self):
+        self.master.title("Exe Runner")
+        self.pack(fill = "both", expand = 0)
+
+        l = ttk.Label(self, text = "What programs would you like to run today?")  #Creates top label
+        l.pack()
+
+        l2 = ttk.Label(self, text = "(Press quit when you've started what you want)")  #Creates next label
+        l2.pack()
+
+        button_code = ttk.Button(self, text="Code Dev (Visual Studio)", command=runDev)  #The next 4 buttons in order fall here
+        button_code.pack()
+
+        button_browse = ttk.Button(self, text="Work/Casual Use (Internet browsers open to emails)", command=runBrowser)
+        button_browse.pack()
+
+        button_art = ttk.Button(self, text="Art (GraphicsGale)", command=runArt)
+        button_art.pack()
+
+        button_quit = ttk.Button(self, text="Quit", command=quit)
+        button_quit.pack()
+
+
+if __name__ == "__main__":
+    main()
