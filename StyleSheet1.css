@@ -126,6 +126,11 @@ body {
                 margin-left: 376px;
             }
 
+            .content .MyProjects .ProjBody img{
+                width: 400px;
+                margin-left: 300px;
+            }
+
             .content .MyProjects .ProjBody .scriptWrapper {
                 display: grid;
                 grid-template-columns: 525px 525px 525px;
