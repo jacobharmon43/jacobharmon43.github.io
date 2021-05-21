@@ -103,22 +103,32 @@ body {
 
         .content .MyProjects .ProjBody {
             padding-left: 100px;
+            max-width: 1000px;
         }
 
             .content .MyProjects .ProjBody p {
-                width: 1000px;
                 font-size: 21px;
-                text-align: center;
                 color: black;
             }
 
             .content .MyProjects .ProjBody h2 {
                 font-size: 60px;
                 color: black;
-                width: 1000px;
+                text-align: center;
+            }
+
+            .content .MyProjects .ProjBody img {
+                width: 400px;
+                margin-left: 300px;
             }
 
             .content .MyProjects .ProjBody iframe {
+                margin-left: 376px;
+            }
+
+            .content .MyProjects .ProjBody img{
+                width: 400px;
+                margin-left: 300px;
             }
 
             .content .MyProjects .ProjBody .scriptWrapper {
