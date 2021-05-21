@@ -145,6 +145,7 @@ body {
                 .content .MyProjects .ProjBody .scriptWrapper embed{
                     width: 500px;
                     height: 500px;
+                    background-color: white;
                 }
 
     /*End Portfolio projects*/
