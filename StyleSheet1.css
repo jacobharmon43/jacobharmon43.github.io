@@ -107,7 +107,7 @@ body {
 
         .content .MyProjects .ProjBody {
             padding-left: 100px;
-            max-width: 1000px;
+            max-width: 1200px;
         }
 
             .content .MyProjects .ProjBody p {
@@ -126,9 +126,6 @@ body {
                 margin-left: 300px;
             }
 
-            .content .MyProjects .ProjBody iframe {
-            }
-
             .content .MyProjects .ProjBody img {
                 width: 400px;
                 margin-left: 300px;
@@ -139,13 +136,12 @@ body {
                 flex-wrap: wrap;
             }
 
-                .content .MyProjects .ProjBody .scriptWrapper script {
-                }
-
-                .content .MyProjects .ProjBody .scriptWrapper embed{
-                    width: 500px;
+                .content .MyProjects .ProjBody .scriptWrapper embed {
+                    min-width: 600px;
+                    max-width: 1000px;
                     height: 500px;
                     background-color: white;
+                    margin: 6px;
                 }
 
     /*End Portfolio projects*/
