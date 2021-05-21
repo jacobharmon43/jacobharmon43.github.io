@@ -6,6 +6,10 @@ html {
     width: 100%;
 }
 
+.gist {
+    width: 500px !important;
+}
+
 body {
     position: absolute;
     background-color: skyblue;
@@ -125,16 +129,14 @@ body {
             .content .MyProjects .ProjBody iframe {
             }
 
-            .content .MyProjects .ProjBody img{
+            .content .MyProjects .ProjBody img {
                 width: 400px;
                 margin-left: 300px;
             }
 
             .content .MyProjects .ProjBody .scriptWrapper {
-                display: grid;
-                grid-template-columns: 525px 525px 525px;
-                grid-row-gap: 10px;
-                grid-column-gap: 10px;
+                display: flex;
+                flex-wrap: wrap;
             }
 
                 .content .MyProjects .ProjBody .scriptWrapper script {
