@@ -23,11 +23,11 @@
         <p>Jacob Harmon</p>
         <p>Saint Louis, MO</p>
         <p>Applied Mathematics and Computer Science Major</p>
-        <a href="#home" onclick="showblock(p0); hide(p1); hide(p2); hide(p3); hide(p4);">Home</a>
-        <a href="#portfolio" onclick="showblock(p1); hide(p0); hide(p2); hide(p3); hide(p4);">My Projects</a>
-        <a href="#resume" onclick="showblock(p2); hide(p0); hide(p1); hide(p3); hide(p4);">My Resume</a>
-        <a href="#about" onclick="showgrid(p3); hide(p0);hide(p1); hide(p2); hide(p4);">About Me</a>
-        <a href="#ContactMe" onclick="showblock(p4); hide(p0); hide(p1); hide(p2); hide(p3);">Contact Me!</a>
+        <a href="#home" onclick="showblock(p0); hideRest([p1,p2,p3,p4]);">Home</a>
+        <a href="#portfolio" onclick="showblock(p1); hideRest([p0,p2,p3,p4]);">My Projects</a>
+        <a href="#resume" onclick="showblock(p2); hideRest([p0,p1,p3,p4]);">My Resume</a>
+        <a href="#about" onclick="showgrid(p3); hideRest([p0,p1,p2,p4]);">About Me</a>
+        <a href="#ContactMe" onclick="showblock(p4); hideRest([p0,p1,p2,p3]);">Contact Me!</a>
     </div>
     <div class="content">
         <div class="home" id="p0">
