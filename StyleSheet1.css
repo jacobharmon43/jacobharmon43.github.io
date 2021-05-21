@@ -22,7 +22,7 @@ body {
 
 .sidebar {
     height: 100%;
-    width: 150px;
+    width: 175px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -34,8 +34,7 @@ body {
 
     .sidebar a {
         width: 85%;
-        padding-left: 5px;
-        padding-top: 3px;
+        padding: 5px 5px 0px 0px;
         text-decoration: none;
         font-size: 20px;
         border-bottom: 3px solid;
@@ -57,7 +56,6 @@ body {
 
     .sidebar .imageWrap {
         display: flex;
-        width: 150px;
     }
 
         .sidebar .imageWrap img {
@@ -75,7 +73,7 @@ body {
 .content {
     height: max-content;
     width: 100%;
-    margin-left: 150px;
+    margin-left: 175px;
 }
 
     .content .home {
@@ -158,6 +156,7 @@ body {
 */
     .content .AboutMe {
         display: none; /*Intitially hidden*/
+        padding-left: 100px;
         grid-template-columns: 750px 750px;
         grid-row: auto auto;
         grid-column-gap: 50px;
@@ -192,7 +191,7 @@ body {
     .content .ContactMe {
         display: none;
         overflow-y: hidden;
-        padding-left: 50px;
+        padding-left: 100px;
         padding-top: 10%;
         min-width: 600px;
         height: 100%;
