@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class delayinputScript : MonoBehaviour
+{
+    public InputField mainInputField;
+    public GameObject squareField;
+    private SquareGen squareGen;
+    private float num;
+
+    //This function is connected to the other script
+    //Parses the inputted string for a number, does not
+    //at this moment cover for bad inputs.
+    public void SetNum()
+    {
+        if(float.TryParse(mainInputField.text, out num))
+        {
+            squareGen.setDelay(float.Parse(mainInputField.text));
+        }
+
+    }
+
+    // Initializes connected to other script.
+    public void Start()
+    {
+        squareGen = squareField.GetComponent<SquareGen>();
+    }
+}

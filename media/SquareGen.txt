@@ -1,0 +1,446 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class SquareGen : MonoBehaviour
+{
+
+    /* Public variables */
+
+    public float MaxHeight = 33;
+    public float areaLen = 63;
+    public Vector3 initPos = new Vector3(-20, -10, 0);
+    public GameObject square;
+    public GameObject squareField;
+    public InputField inputF;
+    public AudioSource audio1;
+    public AudioClip clip;
+    public Text runText;
+    public Text InstructionsText;
+
+    /* Private variables */
+
+    private bool stopRunning = false;
+    private bool isRunning = false;
+    private bool canPress = true;
+    private bool hasGenned = false;
+    private float runtimeDelay = 0;
+    private float RunTime = 0;
+    private float instructionNum = 0;
+    private float numToGen = 0;
+
+    /* Increments runtime every frame*/
+
+    private void Update()
+    {
+        if(isRunning == true)
+        {
+            RunTime += Time.deltaTime;
+        }
+        runText.text = RunTime.ToString();
+        InstructionsText.text = instructionNum.ToString();
+    }
+   
+    /* Private variable manipulation */
+
+    //This function is used by the text entry tool
+    public void setNum(int numn)
+    {
+        numToGen = numn;
+    }
+    
+    //This function decides how slowly each method operates
+    public void setDelay(float delay)
+    {
+        runtimeDelay = delay;
+    }
+
+    public void stopSorting()
+    {
+        if (isRunning == true)
+        {
+            stopRunning = true;
+        }
+    }
+
+    /* Functions associated with the generation of squares */
+    //Generates the squares
+    public void GenerateSquares()
+    {
+        if (!canPress || numToGen == 0)
+        {
+            return;
+        }
+        hasGenned = true;
+        for (int i = 0; i < numToGen; i++)
+        {
+            Vector3 instantiatePos = initPos + new Vector3(i * areaLen / numToGen, 0, 0);
+            GameObject square1 = Instantiate(square, instantiatePos, Quaternion.identity);
+            square1.transform.localScale = new Vector3(areaLen / numToGen, Random.Range(0.5f, MaxHeight), 1);
+            square1.transform.parent = squareField.transform;
+            square1.name = "Rect" + i;
+        }
+    }
+    //Deletes all previously generated squares
+    public void DeleteSquares()
+    {
+        if (canPress)
+        {
+            foreach (Transform child in squareField.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+    }
+   
+    /* Repeated code calls in various functions were compartmentalized here*/
+
+    //Initializes the runtime statistics, so far just instruction count and run duration
+    private void startVars()
+    {
+        hasGenned = false;
+        isRunning = true;
+        RunTime = 0;
+        instructionNum = 0;
+        canPress = false;
+    }
+
+    //Stops runtime counting, relinquishes control back to the user
+    private void endVars()
+    {
+        audio1.Stop();
+        canPress = true;
+        isRunning = false;
+        stopRunning = false;
+    }
+    
+    //Just runs the annoying feedback audio I thought was cool
+    private void setSound(GameObject x)
+    {
+        if(audio1.isPlaying == false)
+        {
+            audio1.pitch = 3f * x.transform.localScale.y / MaxHeight;
+            if(audio1.pitch > 2.8f)
+            {
+                audio1.pitch = 2.8f;
+            }
+            else if(audio1.pitch < 0.25f)
+            {
+                audio1.pitch = 0.25f;
+            }
+            audio1.Play();
+        }
+        else
+        {
+            audio1.Stop();
+        }
+    }
+
+    private bool canRun()
+    {
+        if(hasGenned == true && canPress == true){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //Creates the arrow of children used in the sorting algorithm
+    private GameObject[] setArray()
+    {
+        GameObject[] childs = new GameObject[squareField.transform.childCount];
+        for (int i = 0; i < squareField.transform.childCount; i++)
+        {
+            childs[i] = squareField.transform.GetChild(i).gameObject;
+        }
+        return childs;
+    }
+   
+    /*Functions used in sorting*/
+   
+    //For all sorts but insert sort
+    void Swap(GameObject one, GameObject two)
+    {
+        float height = one.transform.localScale.y;
+        one.transform.localScale = new Vector3(one.transform.localScale.x, two.transform.localScale.y, one.transform.localScale.z);
+        two.transform.localScale = new Vector3(two.transform.localScale.x, height, two.transform.localScale.z);
+    }
+    
+    //Insert sort also required array position swapping as well, for some reason or another.
+    void InsertSwap(GameObject one, GameObject two, int x, int y, GameObject[] arr)
+    {
+        GameObject Temp = arr[x];
+        Vector3 tempPos = one.transform.position;
+        one.transform.position = two.transform.position;
+        two.transform.position = tempPos;
+        arr[x] = arr[y];
+        arr[y] = Temp;
+    }
+
+    //For quick sort.
+    int Partition(GameObject[] arr, int low, int high)
+    {
+        GameObject pivot = arr[high]; // pivot
+        pivot.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0); //The pivot things swap around is yellow.
+        int i = (low - 1); // Index of smaller element and indicates the right position of pivot found so far
+        for (int j = low; j < high; j++)
+        {
+            instructionNum++;
+            // If current element is smaller than the pivot
+            if (arr[j].transform.localScale.y <= pivot.transform.localScale.y)
+            {
+                i++; // increment index of smaller element
+                Swap(arr[i], arr[j]);
+                instructionNum++;
+            }
+        }
+        Swap(arr[i + 1], arr[high]);
+        instructionNum++;
+        pivot.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+        return (i + 1);
+    }
+
+    //Just runs after its already sorted for no particular reason
+    private IEnumerator SatisfyingEnd(GameObject[] arr, float delay)
+    {
+        int len = arr.Length;
+        for(int i = 0; i < len; i++)
+        {
+            arr[i].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            setSound(arr[i]);
+            yield return new WaitForSeconds(delay);
+            arr[i].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+
+        }
+    }
+
+    /*Actual Sorting Functions*/
+
+    private IEnumerator BubbleSort(float delaytime)
+    {
+        startVars();
+        GameObject[] childs = setArray();
+        int len = childs.Length;
+        for (int i = 0; i < len; i++)
+        {
+            for (int j = 0; j < len-i-1; j++)
+            {
+                childs[j].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                childs[j + 1].GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                setSound(childs[j+1]);
+                yield return new WaitForSeconds(delaytime);
+                instructionNum++;
+                if (childs[j].transform.localScale.y > childs[j + 1].transform.localScale.y)
+                {
+                    if (stopRunning)
+                    {
+                        endVars();
+                        yield break;
+                    }
+                    instructionNum++;
+                    Swap(childs[j], childs[j + 1]);
+                    childs[j].GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                    childs[j + 1].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                    yield return new WaitForSeconds(delaytime);
+                }
+                childs[j].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                childs[j + 1].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+            }
+        }
+        endVars();
+        StartCoroutine(SatisfyingEnd(childs, delaytime));
+    }
+
+    private IEnumerator InsertSort(GameObject[] arr, float delaytime)
+    {
+        startVars();
+        int len = arr.Length;
+        for(int i = 1; i < len; ++i)
+        {
+            GameObject key = arr[i];
+            key.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            int j = i - 1;
+            instructionNum++;
+            while (j >=0 && arr[j].transform.localScale.y > key.transform.localScale.y)
+            {
+                if (stopRunning)
+                {
+                    endVars();
+                    yield break;
+                }
+                arr[j].GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                yield return new WaitForSeconds(delaytime);
+                instructionNum++;
+                arr[j].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                InsertSwap(arr[j + 1], arr[j], j+1, j, arr);
+                setSound(arr[j+1]);
+                
+                j--;
+            }
+            key.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+            arr[j + 1] = key;
+            arr[j + 1].transform.position = key.transform.position;
+        }
+        endVars();
+        StartCoroutine(SatisfyingEnd(arr, delaytime));
+    }
+
+    private IEnumerator SelectionSort(float delaytime)
+    {
+        startVars();
+        GameObject[] childs = setArray();
+        int len = childs.Length;
+        for(int i = 0; i < len-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i + 1; j < len; j++)
+            {
+                if (stopRunning)
+                {
+                    endVars();
+                    yield break;
+                }
+                childs[min_idx].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                childs[j].GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                setSound(childs[j]);
+                instructionNum++;
+                if (childs[j].transform.localScale.y < childs[min_idx].transform.localScale.y)
+                {
+                    childs[min_idx].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                    min_idx = j;
+                }
+                yield return new WaitForSeconds(delaytime);
+                childs[min_idx].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                childs[j].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+            }
+            yield return new WaitForSeconds(delaytime);
+            instructionNum++;
+            Swap(childs[min_idx], childs[i]);
+            childs[min_idx].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+        }
+        endVars();
+        StartCoroutine(SatisfyingEnd(childs, delaytime));
+    }
+    
+    private IEnumerator QuickSort(GameObject[] arr, int low, int high, float delay)
+    {
+        if(stopRunning == true)
+        {
+            endVars();
+            yield break;
+        }
+        if (low < high)
+        {
+            int pi = Partition(arr, low, high);
+            yield return new WaitForSeconds(delay);
+            yield return StartCoroutine(QuickSort(arr, low, pi - 1, delay));
+            yield return StartCoroutine(QuickSort(arr, pi + 1, high, delay));
+        }
+    }
+
+    private IEnumerator GnomeSort(GameObject[] arr, float delay)
+    {
+        int index = 0;
+        int len = arr.Length;
+        while(index < len)
+        {
+            if (stopRunning)
+            {
+                endVars();
+                yield break;
+            }
+            if (index == 0)
+            {
+                index++;
+            }
+            arr[index].GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            arr[index - 1].GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+            
+            yield return new WaitForSeconds(delay);
+            instructionNum++;
+            if(arr[index].transform.localScale.y >= arr[index - 1].transform.localScale.y)
+            {
+                arr[index].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                arr[index - 1].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                setSound(arr[index]);
+                index++;
+            }
+            else
+            {
+                setSound(arr[index-1]);
+                instructionNum++;
+                Swap(arr[index], arr[index - 1]);
+                arr[index].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                arr[index - 1].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                index--;
+            } 
+        }
+        endVars();
+        StartCoroutine(SatisfyingEnd(arr, delay));
+    }
+   
+    private IEnumerator QuickSortCall()
+    {
+        if (canRun())
+        {
+            startVars();
+            GameObject[] childs = setArray();
+            yield return StartCoroutine(QuickSort(childs, 0, childs.Length - 1, runtimeDelay));
+            if(stopRunning == false)
+            {
+                StartCoroutine(SatisfyingEnd(childs, runtimeDelay));
+            }
+            endVars();
+        }  
+    }
+    
+    /*Coroutine starting functions*/
+
+    public void InsertSortCall()
+    {
+        if (!canRun())
+        {
+            return;
+        }
+        GameObject[] childs = setArray();
+        StartCoroutine(InsertSort(childs, runtimeDelay));
+    }
+
+    public void BubbleSortCall()
+    {
+        if (!canRun())
+        {
+            return;
+        }
+        StartCoroutine(BubbleSort(runtimeDelay));
+    }
+
+    public void SelectionSortCall()
+    {
+        if (!canRun())
+        {
+            return;
+        }
+        StartCoroutine(SelectionSort(runtimeDelay));
+    }
+
+    
+    
+    public void GnomeSortCall()
+    {
+        if (!canRun())
+        {
+            return;
+        }
+        startVars();
+        GameObject[] childs = setArray();
+        StartCoroutine(GnomeSort(childs, runtimeDelay));
+    }
+
+    public void runQuickSortCall()
+    {
+        StartCoroutine(QuickSortCall());
+    }
+}
