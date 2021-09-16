@@ -12,7 +12,7 @@ function drop(event) {
     var dm = document.getElementById('Throwbox');
     var rect = event.getBoundingClientRect();
     while (dm.style.bottom < rect.y + rect.height) {
-        await delay(500);
+        setTimeout(()=>{console.log("Delay");}, 500);
         dm.style.left += initSpeedX;
         if (init.style.left <= rect.y - rect.width || init.style.left >= rect.y + rect.width) {
             initSpeedX = 0;
