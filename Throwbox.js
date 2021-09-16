@@ -20,6 +20,7 @@ function drop(event) {
         dm.style.top += initSpeedY;
     }
     dm.style.top = rect.y + rect.height;
+    event.preventDefault();
     return false;
 }
 
