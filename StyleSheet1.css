@@ -174,12 +174,12 @@ contains something
         }
 
         .content .Resume .ResumeBody h4{
-            font-size: 35px;
+            font-size: 2.5vw;
             color: black;
         }
 
         .content .Resume .ResumeBody dl{
-            font-size: 25px;
+            font-size: 1.5vw;
         }
 
         .content .Resume .ResumeBody dt{
