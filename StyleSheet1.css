@@ -156,6 +156,26 @@ body {
 
     /*End Portfolio projects*/
 
+/* resume page 
+contains something
+*/
+    .content .Resume {
+        display: none;
+        padding-left: 25px;
+        padding-top: 10%;
+    }
+
+        .content .Resume .ResumeBody{
+            width: 85%;
+        }
+
+        .content .Resume .ResumeBody h3{
+            font-size: 60px;
+            text-align: center;
+            color: black;
+        }
+
+/* end resume page */
     /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
 */
@@ -169,7 +189,6 @@ body {
     }
 
         .content .AboutMe .Body {
-            align-content: center;
             width: 85%;
         }
 
