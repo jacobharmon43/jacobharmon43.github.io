@@ -162,17 +162,23 @@ contains something
     .content .Resume {
         display: none;
         padding-left: 25px;
-        padding-top: 10%;
+        grid-template-columns: 750px 750px;
+        grid-row: auto auto;
+        grid-column-gap: 50px;
+        grid-row-gap: 50px;
     }
 
         .content .Resume .ResumeBody{
             width: 85%;
         }
 
-        .content .Resume .ResumeBody h3{
-            font-size: 60px;
-            text-align: center;
+        .content .Resume .ResumeBody h4{
+            font-size: 35px;
             color: black;
+        }
+
+        .content .Resume .ResumeBody dl{
+            font-size: 25px;
         }
 
 /* end resume page */
