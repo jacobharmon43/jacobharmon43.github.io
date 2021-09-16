@@ -161,15 +161,16 @@ contains something
 */
     .content .Resume {
         display: none;
-        padding-left: 25px;
-        grid-template-columns: 750px 750px;
+        padding-left: 1%;
+        grid-template-columns: 45% 45%;
         grid-row: auto auto;
-        grid-column-gap: 50px;
-        grid-row-gap: 50px;
+        grid-column-gap: 2%;
+        grid-row-gap: 1%;
     }
 
         .content .Resume .ResumeBody{
-            width: 85%;
+            width: 100%;
+            height: 100%;
         }
 
         .content .Resume .ResumeBody h4{
@@ -181,21 +182,32 @@ contains something
             font-size: 25px;
         }
 
+        .content .Resume .ResumeBody dt{
+            float: left;
+            width: 50%;
+        }
+
+        .content .Resume .ResumeBody dd{
+            float: left;
+            width: 40%
+        }
+
 /* end resume page */
     /*About me page
   Contains blog style paragraph sections with a title, body, and image to the right of the body
 */
     .content .AboutMe {
         display: none; /*Intitially hidden*/
-        padding-left: 25px;
-        grid-template-columns: 750px 750px;
+        padding-left: 1%;
+        grid-template-columns: 45% 45%;
         grid-row: auto auto;
-        grid-column-gap: 50px;
-        grid-row-gap: 50px;
+        grid-column-gap: 2%;
+        grid-row-gap: 1%;
     }
 
         .content .AboutMe .Body {
-            width: 85%;
+            width: 100%;
+            height: 100%;
         }
 
             .content .AboutMe .Body h1 {
@@ -211,8 +223,11 @@ contains something
             }
 
             .content .AboutMe .Body img {
-                height: 250px;
-                padding-left: 25%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+                max-height: 100%;
             }
 
     /*End about me page*/
