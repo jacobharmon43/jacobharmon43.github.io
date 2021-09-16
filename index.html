@@ -5,9 +5,9 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
     <script src="Script1.js"></script>
-    <script src="Throwbox.js></script>
+    <script src="Throwbox.js"></script>
 </head>
-<body>
+<body  ondragover="dragover(event)" ondrop="drop(event)">
     <div class="sidebar">
         <div class="imageWrap">
             <img src="media/profpic.png" alt="Image of me">
@@ -21,7 +21,7 @@
         <a href="#about" onclick="showgrid(p3); hideRest([p0,p1,p2,p4]);">About Me</a>
         <a href="#ContactMe" onclick="showblock(p4); hideRest([p0,p1,p2,p3]);">Contact Me!</a>
     </div>
-    <div class="content" ondragover="dragover(event)" ondrop="drop(event)">
+    <div class="content">
         <div class="home" id="p0">
             <div class="word">
                 <span>W</span>
