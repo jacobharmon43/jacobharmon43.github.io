@@ -1,9 +1,3 @@
-const throwbox = document.querySelector('.ThrowBox');
-
-throwbox.addEventListener('dragstart', dragStart,false);
-throwbox.addEventListener('drop', drop, false);
-
-
 function dragStart(event) {
     var style = window.getComputedStyle(event.target, null);
     event.dataTransfer.setData("text/plain",
