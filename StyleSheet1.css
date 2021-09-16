@@ -107,8 +107,7 @@ body {
     /* My actual portfolio projects page*/
 
     .content .MyProjects {
-        display: block;
-
+        display: none;
     }
 
         .content .MyProjects .ProjBody {
