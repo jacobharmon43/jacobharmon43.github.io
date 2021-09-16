@@ -138,6 +138,11 @@ body {
                 margin-left: 300px;
             }
 
+            .content .MyProjects .ProjBody a{
+                font-size: 60px;
+                margin-left: 300px;
+            }
+
             .content .MyProjects .ProjBody .scriptWrapper {
                 display: flex;
                 flex-wrap: wrap;
