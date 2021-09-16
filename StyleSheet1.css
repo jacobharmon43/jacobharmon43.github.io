@@ -72,7 +72,7 @@ body {
 
 .content {
     height: max-content;
-    width: 92%;
+    width: 80%;
     margin-left: 8%;
     max-width: 92%;
     padding-left: 100px;
@@ -107,7 +107,8 @@ body {
     /* My actual portfolio projects page*/
 
     .content .MyProjects {
-        display: none;
+        display: block;
+
     }
 
         .content .MyProjects .ProjBody {
@@ -127,7 +128,6 @@ body {
             }
 
             .content .MyProjects .ProjBody img {
-                width: 50%;
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
@@ -135,6 +135,8 @@ body {
 
             .content .MyProjects .ProjBody a{
                 font-size: 30px;
+                display: block;
+                text-align: center;
             }
 
             .content .MyProjects .ProjBody .scriptWrapper {
