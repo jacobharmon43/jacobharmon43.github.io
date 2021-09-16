@@ -115,11 +115,14 @@ body {
 
         .content .MyProjects .ProjBody {
             padding-left: 100px;
+            padding-bottom: 50px;
+            width: 1250px;
         }
 
             .content .MyProjects .ProjBody p {
                 font-size: 21px;
                 color: black;
+                text-align: center;
             }
 
             .content .MyProjects .ProjBody h2 {
@@ -130,17 +133,17 @@ body {
 
             .content .MyProjects .ProjBody img {
                 width: 400px;
-                margin-left: 300px;
+                margin-left: 425px;
             }
 
             .content .MyProjects .ProjBody img {
                 width: 400px;
-                margin-left: 300px;
+                margin-left: 425px;
             }
 
             .content .MyProjects .ProjBody a{
-                font-size: 60px;
-                margin-left: 300px;
+                font-size: 30px;
+                margin-left: 425px;
             }
 
             .content .MyProjects .ProjBody .scriptWrapper {
