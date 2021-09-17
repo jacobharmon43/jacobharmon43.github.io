@@ -1,7 +1,7 @@
 
 html {
     overflow-y: scroll;
-    max-width: 100%;
+    max-width: 100vw;;
     min-width: 50vw;
     height: 100%;
     width: 100%;
@@ -12,6 +12,7 @@ html {
 }
 
 body {
+    display: flex;
     background-image: url(//www.toptal.com/designers/subtlepatterns/patterns/symphony.png);
     background-position: bottom;
     animation: 4s linear 0s infinite bp;
@@ -35,14 +36,14 @@ body {
 
 .sidebar {
     height: 100%;
-    width: 8%;
+    width: 10vw;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: black;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 2vh;
 }
 
     .sidebar a {
@@ -84,25 +85,17 @@ body {
 
 
 .content {
-    height: max-content;
-    width: 80%;
-    margin-left: 8%;
-    max-width: 92%;
-    padding-left: 100px;
+    width: 80vw;
+    height: 100%;
+    padding-left: 15vw;
 }
 
     .content .home {
-        display: block;
-        overflow-y: hidden;
-        padding-top: 10%;
-        height: 100%;
-        position: absolute;
-        align-content: center;
+        padding-top: 25vh;
     }
 
         .content .home .word {
             font-family: 'Anton', sans-serif;
-            perspective: 1000px;
         }
 
             .content .home .word span {
@@ -210,7 +203,6 @@ contains something
 
         .content .AboutMe .Body {
             width: 100%;
-            min-width: 50vw;
             height: 100%;
         }
 
