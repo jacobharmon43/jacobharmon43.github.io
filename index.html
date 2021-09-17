@@ -48,19 +48,22 @@
         </div>
         <div class="MyProjects" id="p1">
             <div class="ProjBody">
-                <h2>Data Parsing to Test Ziph's Distribution Law</h2>
-                <img src="media/image_2021-09-15_190732.png" />
+                <h2>Data Parsing to Test Zipf's Distribution Law</h2>
+                <img src="media/Figure_1.png" />
                 <p>
-                    I watched a youtube video a ways back about Ziph's Law of Distribution, and how the most common in a set tends to appear twice as much as the second most common
+                    I watched a youtube video a ways back about Zif's Law of Distribution, and how the most common in a set tends to appear twice as much as the second most common
                     in a set, 3 times as common as the third, and so on and so forth until n times as common as the n'th in a set. Apparently this distribution appears everywhere in the world
                     from word counters, to letter counts, to even more weird things like the spacing between sunflowers in a field. I wanted to set up a simple test by taking every word that appears in
                     a wikipedia article, and counting up these words to see if they follow a Ziph distribution. The picture above shows the plot of a test I ran with 500 articles. Last Updated (9/15/21).
                 </p>
-                <a href = "media/CS2300 Project Phase 3.pdf">PDF of project description doc </a>
+                <div class="scriptWrapper">
+                    <embed src="media/DataScraper.txt"/>
+                </div>
                 <p>
-                    Results of project: Ziph's Distribution can be vaguely seen in human generated Wikipedia articles. Some of the error is definitely skewed by the footer notes of wikipedia. I plan
-                    to update this in the near future so it takes more carefully into consideration which paragraphs to read from, I just haven't studied wikipedias html setup enough as of yet.
-                    Source code above.
+                    Results of project: Zipf's Distribution can be clearly seen in the distribution of data on wikipedia articles, as its error is approximately 14% on average from its expected value.
+                    It can be assumed that running larger data sets would clean this error up, but running over 500 articles and scraping every paragraph within the main-content div would simply take
+                    way too long. I learned a lot about scraping data from an html format using BeautifulSoup. I also learned a lot about regex, which helped me accurately choose correct and valid words
+                    to test and shove into my dictionary.
                 </p>
 
             </div>
