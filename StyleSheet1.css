@@ -116,7 +116,7 @@ body {
         }
 
             .content .MyProjects .ProjBody p {
-                font-size: 21px;
+                font-size: 25px;
                 color: black;
                 text-align: center;
             }
@@ -217,7 +217,7 @@ contains something
             }
 
             .content .AboutMe .Body p {
-                font-size: 21px;
+                font-size: 25px;
                 text-align: center;
                 color: black;
             }
