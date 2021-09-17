@@ -1,15 +1,8 @@
 
 html {
     overflow-y: scroll;
-    max-width: 100vw;
-    ;
-    min-width: 50vw;
     height: 100%;
     width: 100%;
-}
-
-.gist {
-    width: 500px !important;
 }
 
 body {
@@ -19,7 +12,6 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding: 0;
 }
 
 @keyframes bp {
@@ -34,9 +26,8 @@ body {
 
 .sidebar {
     position: fixed;
-    display: block;
     height: 100%;
-    width: 100px;
+    width: 10%;
     background-color: black;
 }
 
@@ -63,7 +54,6 @@ body {
         border: 2px solid white;
     }
 
-
     .sidebar a:hover {
         color: darkolivegreen;
         border-color: darkolivegreen;
@@ -71,22 +61,23 @@ body {
 
 
 .content {
-    display: block;
-    width: 70%;
+    float: left;
+    width: 80%;
     height: 100%;
-    margin-left: 110px;
+    margin-left: 20%;
+    padding-bottom: 25px;
 }
 
     .content .home {
-        padding-top: 50%;
+        padding-top: 25%;
     }
 
         .content .home .word {
             font-family: 'Anton', sans-serif;
+            font-size: 10vw;
         }
 
             .content .home .word span {
-                font-size: 10vw;
                 transition: all .1s ease-in-out;
             }
 
@@ -97,10 +88,11 @@ body {
 
     .content .MyProjects {
         display: none;
+        padding-bottom: 25px;
     }
 
         .content .MyProjects .ProjBody {
-            padding-bottom: 5vh;
+            margin-bottom: 50px;
         }
 
             .content .MyProjects .ProjBody img {
@@ -120,19 +112,15 @@ body {
                 text-align: center;
             }
 
-            .content .MyProjects .ProjBody .scriptWrapper {
-                display: flex;
-                flex-wrap: wrap;
-                width: 50%;
+            .content .MyProjects .ProjBody .scriptWrapper embed {
+                background-color: #9c9c9c;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                height: 250px;
+                width: 100%;
+                margin-bottom: 25px;
             }
-
-                .content .MyProjects .ProjBody .scriptWrapper embed {
-                    background-color: white;
-                    margin-bottom: 25px;
-                    display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
 
     /*End Portfolio projects*/
 
@@ -141,19 +129,14 @@ contains something
 */
     .content .Resume {
         display: none;
+        padding-bottom: 25px;
     }
 
         .content .Resume .ResumeBody {
-            width: 100%;
-            height: 100%;
-            padding-bottom: 5vh;
+            margin-bottom: 50px;
         }
 
-            .content .Resume .ResumeBody h1 {
-                text-align: center;
-            }
-
-            .content .Resume .ResumeBody p {
+            .content .Resume .ResumeBody h1, p {
                 text-align: center;
             }
 
@@ -163,11 +146,11 @@ contains something
 */
     .content .AboutMe {
         display: none; /*Intitially hidden*/
+        padding-bottom: 25px;
     }
 
         .content .AboutMe .Body {
-            width: 100%;
-            height: 100%;
+            margin-bottom: 50px;
         }
 
             .content .AboutMe .Body p, h1 {
@@ -186,7 +169,7 @@ contains something
     .content .ContactMe {
         display: none;
         padding-top: 50%;
-        height: 100%;
+        padding-bottom: 25px;
     }
 
 
@@ -196,9 +179,6 @@ contains something
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
         }
 
         .content .ContactMe input[type=submit] {
@@ -213,3 +193,24 @@ contains something
             .content .ContactMe input[type=submit]:hover {
                 background-color: #45a049;
             }
+
+
+@media only screen and (max-device-width: 900px) {
+    .sidebar {
+        width: 100px;
+    }
+
+    .content {
+        margin-left: 110px;
+    }
+}
+
+@media only screen and (min-device-width: 1500px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+}
