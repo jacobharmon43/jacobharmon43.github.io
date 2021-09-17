@@ -11,11 +11,10 @@ html {
 }
 
 body {
-    background-image: media/gradient.png;
+    background-image: url(media/gradient.png);
     background-position: bottom;
     animation: 4s linear 0s infinite bp;
     position: absolute;
-    background-color: skyblue;
     height: 100%;
     width: 100%;
     padding: 0;
