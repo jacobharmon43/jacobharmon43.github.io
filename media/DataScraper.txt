@@ -1,0 +1,73 @@
+import requests as rq
+import matplotlib.pyplot as mpl
+from bs4 import BeautifulSoup as BS
+from collections import Counter
+import re
+import heapq
+
+
+def MostCommonWords(N):
+    print("Counting the words for " + str(N) + " articles.")
+    words = {}
+    averageError = 0
+    for x in range(N):  
+        r = rq.get("http://en.wikipedia.org/wiki/Special:Random")
+        soup = BS(r.content, 'html.parser')
+        div = soup.find(class_ = "mw-parser-output")
+        paragraphs = div.find_all('p')
+        text = ""
+        for p in paragraphs:
+            text += p.text
+        
+        re.sub(r'[0-9]+', '', text)
+        for word in re.findall("[a-zA-Z]+", text):
+            word = word.lower()
+            if(len(word) == 1 and (word != 'a' or word != 'i')):
+                continue
+            if word in words:
+                words[word] += 1
+            else:
+                words[word] = 1
+
+    
+    words = dict(Counter(words).most_common(15))
+    firstWord = next(iter(words))
+    firstVal = words[firstWord]
+    i = 0;
+    for key,value in words.items():
+        i +=1
+        if(key == firstWord):
+            continue
+        value = words[key]/firstVal
+        difference = ((1/(i) - value)/(1/(i)))*100
+        if difference < 0:
+            difference *= -1
+        averageError += difference
+
+    averageError /= i;
+
+    print(" \n Average error from expected Ziph value: " + str(averageError) + "%")
+    
+    mpl.bar(range(len(words)), list(words.values()), align='center')
+    mpl.grid()
+    mpl.title('Word Counts: ')
+    mpl.xlabel('Word')
+    mpl.ylabel('Count')
+    mpl.xticks(range(len(words)), words.keys(), rotation = 45,fontsize=9)
+    mpl.show()
+    
+MostCommonWords(500)
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
