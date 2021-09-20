@@ -24,6 +24,24 @@ body {
     }
 }
 
+.collapsible{
+            background-color: lightgrey;
+            cursor: pointer;
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 5vh;
+            border: none;
+            outline: none;
+            font-size: x-large;
+            font-family: ui-sans-serif;
+            border-radius: 25px;
+        }
+
+.collapsible:hover{
+    background-color: aliceblue;
+}
+
 .sidebar {
     position: fixed;
     height: 100%;
@@ -148,25 +166,6 @@ contains something
         display: none; /*Intitially hidden*/
         padding-bottom: 25px;
     }
-
-        .content .AboutMe .collapsible{
-            background-color: lightgrey;
-            cursor: pointer;
-            width: 85%;
-            margin-left: auto;
-            margin-right: auto;
-            height: 5vh;
-            border: none;
-            outline: none;
-            font-size: x-large;
-            font-family: ui-sans-serif;
-            border-radius: 25px;
-        }
-
-        .content .AboutMe .collapsible:hover{
-            background-color: aliceblue;
-        }
-
         .content .AboutMe .Body {
             margin-bottom: 50px;
             display: none;
