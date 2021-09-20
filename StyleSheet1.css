@@ -113,7 +113,7 @@ body {
             border: none;
             font-family: ui-sans-serif;
             border-radius: 25px;
-            font-size: 25px;
+            font-size: 20px;
         }
 
             .content .MyProjects .collapsible:hover {
@@ -190,7 +190,7 @@ contains something
             border: none;
             font-family: ui-sans-serif;
             border-radius: 25px;
-            font-size: 25px;
+            font-size: 20px;
         }
 
         .content .AboutMe .collapsible:hover {
