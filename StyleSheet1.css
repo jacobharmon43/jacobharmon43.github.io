@@ -24,21 +24,16 @@ body {
     }
 }
 
-.collapsible{
-            background-color: lightgrey;
-            cursor: pointer;
-            width: 85%;
-            margin-left: auto;
-            margin-right: auto;
-            height: 5vh;
-            border: none;
-            outline: none;
-            font-family: ui-sans-serif;
-            border-radius: 25px;
-        }
+.collapsible {
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    font-family: ui-sans-serif;
+    border-radius: 25px;
+}
 
-.collapsible:hover{
-    background-color: aliceblue;
+.content .AboutMe .collapsible:hover {
+    background-color: lightcoral;
 }
 
 .sidebar {
@@ -105,8 +100,24 @@ body {
 
     .content .MyProjects {
         display: none;
-        padding-bottom: 25px;
+        padding-top: 25px;
     }
+        .content .MyProjects .collapsible {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            height: 5vh;
+            background-color: lightgrey;
+            cursor: pointer;
+            border: none;
+            font-family: ui-sans-serif;
+            border-radius: 25px;
+        }
+
+            .content .MyProjects .collapsible:hover {
+                background-color: lightblue;
+            }
 
         .content .MyProjects .ProjBody {
             margin-bottom: 50px;
@@ -147,7 +158,7 @@ contains something
 */
     .content .Resume {
         display: none;
-        padding-bottom: 25px;
+        padding-top: 25px;
     }
 
         .content .Resume .ResumeBody {
@@ -166,6 +177,23 @@ contains something
         display: none; /*Intitially hidden*/
         padding-top: 25px;
     }
+
+        .content .AboutMe .collapsible {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            height: 5vh;
+            background-color: lightgrey;
+            cursor: pointer;
+            border: none;
+            font-family: ui-sans-serif;
+            border-radius: 25px;
+        }
+
+        .content .AboutMe .collapsible:hover {
+            background-color: lightblue;
+        }
         .content .AboutMe .Body {
             display: none;
         }            
@@ -185,8 +213,7 @@ contains something
 
     .content .ContactMe {
         display: none;
-        padding-top: 25%;
-        padding-bottom: 25px;
+        padding-top: 25px;
     }
 
 
