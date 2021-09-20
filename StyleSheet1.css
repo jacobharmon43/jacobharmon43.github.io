@@ -114,6 +114,7 @@ body {
             font-family: ui-sans-serif;
             border-radius: 25px;
             font-size: 20px;
+            text-align: center;
         }
 
             .content .MyProjects .collapsible:hover {
@@ -191,6 +192,7 @@ contains something
             font-family: ui-sans-serif;
             border-radius: 25px;
             font-size: 20px;
+            text-align: center;
         }
 
         .content .AboutMe .collapsible:hover {
