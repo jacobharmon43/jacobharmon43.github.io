@@ -22,7 +22,7 @@ var collapsibles = document.getElementsByClassName("collapsible");
 
 for(var i = 0; i < collapsibles.length; i++){
     collapsibles[i].addEventListener("click", function(){
-        toggle(this.nextSibling);
+        toggle(this.nextElementSibling);
     });
 }
 
