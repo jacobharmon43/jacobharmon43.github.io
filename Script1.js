@@ -23,4 +23,12 @@ var toggle = function (elem) {
     show(elem);
 }
 
+var collapsibles = document.getElementsByClassName("collapsible");
+
+for(int i = 0; i < collapsibles.length; i++){
+    collapsibles[i].addEventListener("click", function(){
+        this.nextElementSibling.display === "block" ? this.nextElementSibling.display = "none" : this.nextElementSibling.display = "block";
+    });
+}
+
 
