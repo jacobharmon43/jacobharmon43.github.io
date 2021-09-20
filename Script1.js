@@ -1,8 +1,3 @@
-// JavaScript source code
-var showgrid = function (elem) {
-    elem.style.display = 'grid';
-};
-
 var showblock = function (elem) {
     elem.style.display = 'block';
 };
@@ -13,7 +8,7 @@ var hide = function (elem) {
 
 var hideRest = function (elems) {
     elems.forEach(element => { hide(element); });
-}
+};
 
 var toggle = function (elem) {
     if (window.getComputedStyle(elem).display === 'block') {
@@ -27,10 +22,7 @@ var collapsibles = document.getElementsByClassName("collapsible");
 
 for(var i = 0; i < collapsibles.length; i++){
     collapsibles[i].addEventListener("click", function(){
-        if(this.nextElementSibling.display === "block")
-            this.nextElementSibling.display = "none";
-         else
-            this.nextElementSibling.display = "block";
+        toggle(this.nextSibling);
     });
 }
 
