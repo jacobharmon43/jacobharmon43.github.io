@@ -111,6 +111,7 @@ body {
 
         .content .MyProjects .ProjBody {
             margin-bottom: 50px;
+            display: none;
         }
 
             .content .MyProjects .ProjBody img {
@@ -164,10 +165,9 @@ contains something
 */
     .content .AboutMe {
         display: none; /*Intitially hidden*/
-        padding-bottom: 25px;
+        padding-top: 25px;
     }
         .content .AboutMe .Body {
-            margin-bottom: 50px;
             display: none;
         }            
 

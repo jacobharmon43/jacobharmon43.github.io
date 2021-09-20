@@ -11,20 +11,16 @@ var hideRest = function (elems) {
 };
 
 var toggle = function (elem) {
+    console.log(elem);
     if (window.getComputedStyle(elem).display === 'block') {
         hide(elem);
         return;
     }
-    show(elem);
+    showblock(elem);
 }
 
-var collapsibles = document.getElementsByClassName("collapsible");
-
-for(var i = 0; i < collapsibles.length; i++){
-    collapsibles[i].addEventListener("click", function(){
-        console.log("Clicked");
-        toggle(this.nextElementSibling);
-    });
+var toggleNext = function (elem) {
+    toggle(elem.nextElementSibling);
 }
 
 
