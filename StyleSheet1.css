@@ -59,8 +59,32 @@ body {
         border-color: darkolivegreen;
     }
 
+.content {
+    float: left;
+    width: 85%;
+    height: 100%;
+    margin-left: 15%;
+    margin-bottom: 25px;
+}
 
-.content .collapsible {
+    .content .home {
+        padding-top: 25%;
+    }
+
+        .content .home .word {
+            font-family: 'Anton', sans-serif;
+            font-size: 10vw;
+        }
+
+            .content .home .word span {
+                transition: all .1s ease-in-out;
+            }
+
+                .content .home .word span:hover {
+                    font-size: 20vw;
+                }
+    
+    .content .collapsible {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -122,43 +146,11 @@ body {
         margin-bottom: 25px;
     }
 
-.content {
-    float: left;
-    width: 85%;
-    height: 100%;
-    margin-left: 15%;
-    margin-bottom: 25px;
-}
-
-    .content .home {
-        padding-top: 25%;
-    }
-
-        .content .home .word {
-            font-family: 'Anton', sans-serif;
-            font-size: 10vw;
-        }
-
-            .content .home .word span {
-                transition: all .1s ease-in-out;
-            }
-
-                .content .home .word span:hover {
-                    font-size: 20vw;
-                }
-    /* My actual portfolio projects page*/
-
     .content .MyProjects {
         display: none;
         padding-top: 25px;
     }
         
-
-
-
-    /* resume page 
-contains something
-*/
     .content .Resume {
         display: none;
         padding-top: 25px;
@@ -172,22 +164,16 @@ contains something
                 text-align: center;
             }
 
-    /* end resume page */
-    /*About me page
-  Contains blog style paragraph sections with a title, body, and image to the right of the body
-*/
     .content .AboutMe {
         display: none; /*Intitially hidden*/
         padding-top: 25px;
     }
 
-    /*End about me page*/
 
     .content .ContactMe {
         display: none;
         padding-top: 25px;
     }
-
 
         .content .ContactMe input[type=text], textarea {
             width: 100%;
