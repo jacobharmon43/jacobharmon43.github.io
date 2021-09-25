@@ -20,8 +20,7 @@ var toggle = function (elem) {
 }
 
 var toggleNext = function (elem) {
+    elem.classList.toggle("active");
     toggle(elem.nextElementSibling);
 }
-
-
 

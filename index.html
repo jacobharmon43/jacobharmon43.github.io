@@ -31,8 +31,31 @@
             </div>
         </div>
         <div class="MyProjects" id="p1">
+            <button type="button" class="collapsible" onclick="toggleNext(this)"> 3D Physics Puzzle Platformer: Gravity </button>
+            <div class="DropDownContent">
+                <img src="media/Figure_1.png" />
+                <p>
+                    I was inspired to make a physics puzzle game by my love for physics and the ability to throw things around in weightlessness. The core mechanics for gravity I thought up were that you could manipulate the gravity of objects,
+                    and then you could move objects around freely in space, with the ability to fling them, or carefully place them in weightlessness. This exploded into something much more with the help of my friend Emmett with the visuals,
+                    and has yet to be finished but the project contains a few major classes:
+                </p>
+                <p> A Player class consisting of: Gravity Tool Controller, Player Camera Controls, Player Movement Controls, Player Input Reader, Generic Health Class</p>
+                <p> A Interactible Materials consisting of: Physics Simulator, Generic Health Class (if destructible material), Destructible behavior</p>
+                <p>
+                    A lot of the games design draws heavily from what I learned in my physics one course, so kinematics, and hopefully soon to come, springs! It was and still is a blast to develop, and I am looking forward to continually update this page
+                    and the game as I go along. Only the player movement, tool, and camera source code will appear below, inquire through email if you want further source code material for miscellaneous things like a button interface I made, or the physics
+                    of the materials ect.
+                </p>
+                <div class="scriptWrapper">
+                    <embed src="media/DataScraper.txt" />
+                </div>
+                <p>
+                    Results of project: Massively fun, engaging project that taught me so much about C#, Unity, OOP, Teamwork, Asset Management and so much more. Not done yet, so no real further results to share (Last Updated 9/25/2021)
+                </p>
+
+            </div>
             <button type="button" class="collapsible" onclick="toggleNext(this)"> Testing Zipf's Law with Python Data Scraping </button>
-            <div class="ProjBody">
+            <div class="DropDownContent">
                 <img src="media/Figure_1.png" />
                 <p>
                     Zipf's Law of Distribution governs an ordered set of pairs, (Element, Count of Appearances). The law states that the number of times an element appears is inversely proportional
@@ -55,7 +78,7 @@
 
             </div>
             <button type="button" class="collapsible" onclick="toggleNext(this)"> ECommerce Application Connected with mySQL Database </button>
-            <div class="ProjBody">
+            <div class="DropDownContent">
                 <img src="media/image_2021-09-15_190732.png" />
                 <p>
                     This was a database project I constructed that was meant to mimic that of how an ECommerce site would work. I handled a Username and Password service,
@@ -71,7 +94,7 @@
                 </p>
             </div>
             <button type="button" class="collapsible" onclick="toggleNext(this)"> Python Process Automation </button>
-            <div class="ProjBody">
+            <div class="DropDownContent">
                 <img src="media/ExeRunner.PNG" />
                 <p>
                     Through this project I wanted to just test out creating a startup program for a windows pc. In effort to keep things simple, I just wanted to create a program
@@ -89,7 +112,7 @@
 
             </div>
             <button type="button" class="collapsible" onclick="toggleNext(this)"> Visualized Data Sorting with Bar Graphs </button>
-            <div class="ProjBody">
+            <div class="DropDownContent">
                 <iframe frameborder="0" src="https://itch.io/embed/1035666?bg_color=ffffff&amp;fg_color=000000&amp;link_color=fa5c5c&amp;border_color=363636" width="1200" height="167"><a href="https://jacobharmon43.itch.io/data-sorter">Data Sorter by jacobharmon43</a></iframe>
                 <p>
                     This tool is useful for visualizing how different sorting algorithms work internally. This link will take you to itch so you can run the engine I used to render the shapes
@@ -106,7 +129,7 @@
                 </p>
             </div>
             <button type="button" class="collapsible" onclick="toggleNext(this)"> This Website </button>
-            <div class="ProjBody">
+            <div class="DropDownContent">
                 <p>
                     Results of project: This websites source code can be just viewed through inspect element, if you interested in how I set it up. I learned a lot about HTML, CSS, PHP, and Javascript through
                     this project. While I have also learned that web development tools are very useful, coding this entire site by hand was definitely worth the painstaking effort, as I learned many useful skills
@@ -144,20 +167,28 @@
             </div>
         </div>
         <div class="AboutMe" id="p3">
-            <button type="button" class="collapsible" onclick="toggleNext(this)"> Summary of myself </button>
-            <div class="Body">
+            <button type="button" class="collapsible" onclick=" toggleNext(this)"> Who I Am </button>
+            <div class="DropDownContent">
                 <img src="media/1200px-Missouri_S%26T_Miners_logo.svg.png" alt="S&amp;T Logo">
                 <p>
-                    I am a senior dual majoring in Computer Science and Mathematics. I am looking for a chance to get experience working in these fields in order to cultivate my
-                    skills, and to demonstrate my willingness and capability to learn and adapt. I have many skills in mathematical and statistics oriented programming, like data science. I am also
-                    keenly interested in software design, as creating tools that simplify my life and the lives of others are very rewarding. I also would love to give a try to professional game design
-                    as working closely with a friend of mine I have been creating a 3D puzzle platformer in my free time with physics oriented gravity puzzles, and through working on this
-                    I have a new found respect for the games I play in my free time, as weaving together intricate classes, models, and creating state machines to handle different behaviors is quite the process
-                    and I would love to see how this is all handled at a professional level.
+                    I am a senior dual majoring in Computer Science and Mathematics. I am looking for a chance to get experience working in the field of Computer Science order to cultivate my
+                    skills and demonstrate my willingness and capability to learn. I have many skills in mathematical and statistics oriented programming, such as data science or machine learning.
+                    I am also well versed in database construction and query optimization through my two database classes I have taken here at Missouri S&T. I am the Vice President of the Mathematical Association
+                    of America, and a member at large of the Association for Computing Machinery.
+                </p>
+            </div>
+            <button type="button" class="collapsible" onclick=" toggleNext(this)"> My Interests </button>
+            <div class="DropDownContent">
+                <img src="media/coding.png" alt="S&amp;T Logo">
+                <p>
+                    I am interested in software design, whether that be a tool for engineers or pilots to use to make their jobs easier, or whether it be a video game to entertain thousands of people. I find 
+                    satisfaction in finishing a product that not only satisfies me, but will be satisfying to those who see or use it. I am also currently very interested in web development, as my databases class 
+                    and this portfolio project have led me down a track of creating numerous web applications and web pages. I am also interested in statistical analysis, or data science, as I find some projects to 
+                    have very interesting results that I strive to see myself, and show and explain to those around me, for example, the Zipf experiment I did on my portfolio page.
                 </p>
             </div>
         </div>
-        <div class="ContactMe" id="p4">
+        <div class="DropDownContent" id="p4">
             <h3> Contact Me! (PHP isn't supported by Github pages, so just email me at JacobHarmon43@gmail.com) </h3>
             <form action="Email.php" method="post">
                 First Name: <input type="text" name="first_name"><br>
