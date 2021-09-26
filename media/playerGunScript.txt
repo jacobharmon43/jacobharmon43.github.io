@@ -1,0 +1,282 @@
+using UnityEngine;
+
+public class playerGunScript : MonoBehaviour
+{
+    /* This class handles the following
+     * All player mouse inputs.
+     * All shooting related raycasts
+     * All object moving related to the gun 
+     ***** MIGHT MOVE THE OBJECT MOVING TO THE MATERIAL SCRIPT *****
+     */
+    public float pullingSpeed = 50f;
+    public float gunRange = 100;
+    public float repulsePower = 50;
+
+    private Camera cam;
+    private playerManager playerStats;
+    private UI_Manager uiManager;
+
+    //Private variables
+    private Transform playerCamTransform;
+    private GameObject pulledObject;
+    private bool isObjectFixed = false;
+    private int gravitySwapState = 0;
+    private float currentGravityScaleOfObject;
+    private float setDistanceToPlayer = 3f;
+    private int gunState = 0;
+
+    private float repulseCharge = 0.0f;
+    private float repulseMax = 100.0f;
+
+    private Transform gun;
+    private soundManager player;
+
+    //Constants
+    private readonly float dragSet = 4f;
+    private readonly float maxDistanceToPlayer = 7f;
+    private readonly float minDistanceToPlayer = 3f;
+    private readonly float scaleOfMouseScroll = 0.5f;
+
+    // Variable Init
+    void Start()
+    {
+        gun = transform.Find("Gun");
+        player = gun.GetComponent<soundManager>();
+        playerStats = GetComponent<playerManager>();
+        uiManager = playerStats.canvas.GetComponent<UI_Manager>();
+        cam = GetComponentInChildren<Camera>();
+        playerCamTransform = cam.transform;
+    }
+
+    //Input Updates go here
+    void Update()
+    {
+        HandleSwap();
+        HandleMouseInput();
+    }
+
+    //Physics updates go here
+    private void FixedUpdate()
+    {
+        if (IsPulling())
+        {
+            PullToPlayer(pulledObject);
+        }
+    }
+
+    //Used externally in materialScript for release.
+    public void DropObject()
+    {
+        SetPulledObjectForces();
+        pulledObject = null;
+    }
+
+    //Used internally here, and externally to force the player to drop the object.
+    public bool IsPulling()
+    {
+        return (pulledObject != null);
+    }
+
+    public Transform PullingWhat()
+    {
+        if(pulledObject != null)
+        {
+            return pulledObject.transform;
+        }
+        return null;
+    }
+
+    private void HandleMouseInput()
+    {
+        if(gunState == 1)
+        {
+            uiManager.UpdateGravityModeText("Repulse Charge: " + repulseCharge + "%");
+            HandleRepulsorInputs();
+        }
+        if (!IsPulling())
+        {
+            NotPullingInputs();
+            return;
+        }
+        IsPullingInputs();
+    }
+
+    private void HandleRepulsorInputs()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            repulseCharge += 0.5f;
+            repulseCharge = Mathf.Round((repulseCharge) * 100) / 100;
+            if (repulseCharge >= repulseMax)
+            {
+                repulseCharge = repulseMax;
+            }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Fire();
+            repulseCharge = 0.0f;
+        }
+    }
+
+    private void Fire()
+    {
+        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit hit, gunRange))
+        {
+            if (hit.transform.CompareTag("Interactible"))
+            {
+                Rigidbody hitRb = hit.transform.GetComponent<Rigidbody>();
+                hitRb.AddForce(repulseCharge * repulsePower * Time.deltaTime * playerCamTransform.forward, ForceMode.VelocityChange);
+            }
+            player.RunRandomSound();
+        }
+    }
+
+    private void NotPullingInputs()
+    {
+        if (Input.GetMouseButtonDown(0) && gunState == 0)
+        {
+            if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit hit, gunRange))
+            {
+                if (hit.transform.CompareTag("Interactible"))
+                {
+                    SwapObjectGravity(hit.transform);
+                }
+            }
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            SetPulledObjectToRaycast();
+        }
+    }
+
+    private void IsPullingInputs()
+    {
+        if (Input.GetMouseButtonUp(1))
+        {
+            SetPulledObjectForces();
+            setDistanceToPlayer = minDistanceToPlayer;
+        }
+        SetDistance();
+    }
+
+    //Related to the positioning of a pulled object
+    private void SetDistance()
+    {
+        setDistanceToPlayer += Input.mouseScrollDelta.y * scaleOfMouseScroll;
+        if (setDistanceToPlayer > maxDistanceToPlayer)
+        {
+            setDistanceToPlayer = maxDistanceToPlayer;
+        }
+        else if (setDistanceToPlayer < minDistanceToPlayer)
+        {
+            setDistanceToPlayer = minDistanceToPlayer;
+        }
+    }
+
+    private void PullToPlayer(GameObject obj)
+    {
+        if (obj == null || isObjectFixed)
+        {
+            return;
+        }
+        Rigidbody objRb = obj.GetComponent<Rigidbody>();
+        objRb.angularVelocity = Vector3.zero;
+        Vector3 currentLocation = obj.transform.position;
+        Vector3 targetLocation = playerCamTransform.position + (playerCamTransform.forward * setDistanceToPlayer);
+        Vector3 direction = (targetLocation - currentLocation);
+        if (direction.magnitude < 0.1f)
+        {
+            pulledObject.transform.position = targetLocation;
+            objRb.velocity = Vector3.zero;
+            direction = Vector3.zero;
+        }
+        Vector3 movement = direction.normalized * pullingSpeed * Time.deltaTime;
+        objRb.AddForce(movement, ForceMode.VelocityChange);
+    }
+
+    //Swapping gravity states, either on input, or on shooting a compatible object.
+    private void HandleSwap()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if(gunState == 0)
+            {
+                gunState = 1;
+            }
+            else if(gunState == 1)
+            {
+                gunState = 0;
+                string S = "Gravity Mode: None";
+                if (gravitySwapState == 0)
+                {
+                    S = "Gravity Mode: Downwards";
+                }
+                uiManager.UpdateGravityModeText(S);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C) && gunState != 1)
+        {
+            gravitySwapState++;
+            if (gravitySwapState >= 2)
+            {
+                gravitySwapState = 0;
+            }
+            string S = "Gravity Mode: None";
+            if(gravitySwapState == 0)
+            {
+                S = "Gravity Mode: Downwards";
+            }
+            uiManager.UpdateGravityModeText(S);
+        }
+    }
+
+    private void SwapObjectGravity(Transform obj)
+    {
+        float change = 0f;
+        if(gravitySwapState == 0)
+        {
+            change = 1f;
+        }
+        obj.GetComponent<materialScript>().ChangeGravityScale(change);
+    }
+
+    //Reused code compartmentalized
+    private void SetPulledObjectInit()
+    {
+        Rigidbody tempRb = pulledObject.GetComponent<Rigidbody>();
+        materialScript objScript = pulledObject.GetComponent<materialScript>();
+        tempRb.velocity = Vector3.zero;
+        tempRb.angularVelocity = Vector3.zero;
+        tempRb.drag = dragSet;
+        currentGravityScaleOfObject = objScript.ReadGravityScale();
+        objScript.ChangeGravityScale(0);
+        objScript.SetShouldMove(false);
+    }
+
+    private void SetPulledObjectForces()
+    {
+        Rigidbody tempRb = pulledObject.GetComponent<Rigidbody>();
+        materialScript objScript = pulledObject.GetComponent<materialScript>();
+        tempRb.drag = 0;
+        objScript.ChangeGravityScale(currentGravityScaleOfObject);
+        objScript.SetShouldMove(true);
+        pulledObject = null;
+    }
+
+    private void SetPulledObjectToRaycast()
+    {
+        if (Physics.Raycast(playerCamTransform.position, playerCamTransform.forward, out RaycastHit hit, gunRange))
+        {
+            if (hit.transform.CompareTag("Interactible"))
+            {
+                if (hit.transform.GetComponent<materialScript>().canGrab == true)
+                {
+                    pulledObject = hit.transform.gameObject;
+                    SetPulledObjectInit();
+                }
+            }
+        }
+    }
+
+}
