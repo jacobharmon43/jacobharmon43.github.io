@@ -35,24 +35,28 @@
             <div class="DropDownContent">
                 <img src="media/weatherart.png" />
                 <p>
-                    This was a independently chosen project for my special topics machine learning course where I wanted to learn something new. Familiar with a few machine learning projects I have seen online
-                    I decided to try not to replicate those and instead delve into a field I had never looked into before. With zero knowledge of how weather is predicted, or how any variables effect the weather,
-                    I set off in hopes to discover knowledge by letting a machine do the thinking for me.
+                    Many people take for granted having advanced knowledge of the weather for the upcoming days, not knowing how challenging the process of predicting it can be. I set out on this project in hopes of understanding to some 
+                    capacity that process and what goes into it using machine learning. The process I underwent had three major steps: Data Collection, Data Analysis, Regression Analysis.
                 </p>
+                <h3> Data Collection: </h3>
                 <p>
-                    First and foremost, I had to get weather data. Unfortunately, there was no readily available data on the local weather in the city of Rolla, or atleast not a huge spreadsheet for me to read. I had settled
-                    on scraping the data myself off of local weather sites. I had to set up a dummy browser, and then "browse the internet" using it as humanly as possible in order to avoid being detected by the anti-scraping systems.
-                    This is mostly tackled by the Selenium library I put to use, with a bit of html parsing and element waiting done by me. Source code for scraping found below:
+                    A broad search for a large collection of local weather data for the city of Rolla left me empty handed, so I was forced to collect it myself. Not having
+                    10 years to finish this project, I had to resort to scraping it from a collection that was not readily available for public download. The simple process of scraping
+                    becomes much less simple when you factor in live webpages. The very first step I had to undergo in scraping was setting up a dummy browser, which allows me
+                    to interact with live webpages as a person would, but using code. Once I had set up the code to input a data and submit the form, I was then able to begin reading
+                    html elements to grab up all the data I needed to analyze for the project. Scraping source code found below:
                 </p>
                 <div class="scriptWrapper">
                     <embed src="media/DataScraper5001.txt" />
                 </div>
+                <h3> Data Analysis and Regression: </h3>
                 <p>
-                    Then, I went ahead and took the large dataset I had collected (from about mid 2008 to the end of 2020), and analyzed it in a few ways to determine which variables impacted the weather the most,
-                    and whether or not I could use this set of data to predict the total rainfall for the day. Turns out, with my limited data set, and how imprecise my prediction metric was, my predictions turned out
-                    to be a bit inaccurate, to a degree of about 5mm of total rainfall a day off. A few potential reasons for how off my predictions were stem from how non-specific my prediction timeline was, as a full 24 hour
-                    period cannot be predicted as accurately as a 1 hour period. Another potential reason stems from my lack of a solid variable base, predicting something as complex as weather cannot come from 8 measly variables
-                    a lot more goes into it, I just did not have access to that data. Analysis and regression code found below:
+                    After having ascertained the data, my next step was to analyze it in order to reduce the number of dimensions in my regression analysis. Upon testing the 
+                    correlation between the variables and the output, along with testing the single variable regression analysis, I discovered that most of the variables were equally
+                    valuable, or invaluable on their own. This meant that only a combination of these factors could result in an accurate prediction. After not being able to easily
+                    eliminate any variables, I ran the full linear regression of all the variables. Due to the unfortunately small data set, and the metric of which I was predicting, my 
+                    outputs were relatively inaccurate. Predicting the rainfall for a 24 hour period proved too much for my small data set to do. Due to my data only applied to 24 hour periods,
+                    I was unable to increase my outputs precision any further, and such an average inaccuracy of 6mm / day of precipiation is what I settled on.
                 </p>
                 <div class="scriptWrapper">
                     <embed src="media/DataRegression.txt" />
@@ -64,7 +68,8 @@
                 <a href="media/FinalWeatherData.csv"> Weather data </a>
                 <a href="media/5001 pres.pdf">PDF of project description doc </a>
                 <p>
-                    Results of project: I learned a lot more than I'd ever want to about weather, and refined my knowledge in the process of machine learning problems, and data science as a whole.
+                    Results of project: I learned a lot more than I'd ever want to about weather, and refined my knowledge in the process of machine learning problems, and data science as a whole. I was also
+                    able to understand the downfalls of my predictions, and have the knowledge to avoid those pits in the future machine learning projects I will undertake.
                 </p>
 
             </div>
